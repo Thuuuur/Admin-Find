@@ -24,7 +24,7 @@ foreach ($usuarioArray as $userData) {
 session_start();
 $_SESSION['usuariosObjArray'] = $usuariosObjArray;
 
-$erro = ""; // Inicializa a variável de erro
+$erro = ""; 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = $_POST["login"];

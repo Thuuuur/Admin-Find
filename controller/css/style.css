@@ -279,119 +279,126 @@
 
        /* Tabelas */
        .tables {
-           width: auto;
-           margin-left: 310px;
-           height: auto;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           margin-top: 80px;
-       }
-
-       .table-container {
-           width: 100%;
-           max-width: 1400px;
-           /* Ajuste a largura máxima conforme necessário */
-           height: 300px;
-           /* Defina a altura desejada para a área de rolagem */
-           overflow: auto;
-           /* Adiciona barras de rolagem horizontal e vertical */
-           border: none;
-           /* Remove a borda ao redor da área de rolagem */
-           padding: 0;
-           /* Remove o espaçamento interno */
-           background-color: #f9f9f9;
-           /* Cor de fundo da tabela */
-       }
-
-       /* Estilização das barras de rolagem no navegador Webkit (Chrome, Safari) */
-       .table-container::-webkit-scrollbar {
-           width: 12px;
-           /* Largura da barra de rolagem vertical */
-           height: 12px;
-           /* Altura da barra de rolagem horizontal */
-       }
-
-       .table-container::-webkit-scrollbar-thumb {
-           background: #36454F;
-           /* Cor da parte rolável da barra */
-           border-radius: 10px;
-           /* Borda arredondada para o 'polegar' da barra de rolagem */
-       }
-
-       .table-container::-webkit-scrollbar-thumb:hover {
-           background: #2c3e50;
-           /* Cor da parte rolável ao passar o mouse (um tom mais escuro) */
-       }
-
-       .table-container::-webkit-scrollbar-track {
-           background: #f9f9f9;
-           /* Cor do fundo da barra de rolagem (mesma cor do fundo da tabela) */
-           border-radius: 10px;
-           /* Borda arredondada para a faixa da barra de rolagem */
-       }
-
-       table {
-           border-collapse: collapse;
-           width: 100%;
-           /* Faz com que a tabela ocupe toda a largura do contêiner */
-       }
-
-       th,
-       td {
-           border: 1px solid #ccc;
-           text-align: left;
-           padding: 8px;
-           box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-           background-color: #fff;
-           /* Cor de fundo das células da tabela */
-       }
-
-       #table-title-start {
-           padding: 8px;
-           border-top-left-radius: 15px;
-       }
-
-       #table-title-end {
-           padding: 8px;
-           border-top-right-radius: 15px;
-       }
-
-       th {
-           background-color: #36454F;
-           color: white;
-           font-size: 13px;
-           text-align: center;
-           height: 50px;
-       }
-
-       td {
-           height: 40px;
-           width: 130px;
-       }
-
-       .table-title {
-           border: none;
-       }
-
-       /* overlay */
-       .overlay {
-           display: none;
-       }
-
-       .teste {
-           width: auto;
-           margin-left: 310px;
-           height: 280px;
-       }
-
-       .nav-buttons.active {
-           color: #FF5800;
-       }
-
-       .nav-buttons.active .icones-image {
-           filter: invert(55%) sepia(100%) saturate(5000%) hue-rotate(360deg) brightness(100%) contrast(100%);
-       }
+        width: auto;
+        margin-left: 310px;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 80px;
+    }
+    
+    .table-container {
+        width: 100%;
+        max-width: 1400px;
+        height: 300px;
+        overflow: auto;
+        border: none;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+    
+    .table-container::-webkit-scrollbar {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .table-container::-webkit-scrollbar-thumb {
+        background: #36454F;
+        border-radius: 10px;
+    }
+    
+    .table-container::-webkit-scrollbar-thumb:hover {
+        background: #2c3e50;
+    }
+    
+    .table-container::-webkit-scrollbar-track {
+        background: #f9f9f9;
+        border-radius: 10px;
+    }
+    
+    .table-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .table-select {
+        margin-left: 10px;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+        font-weight: bold;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+    
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    
+    th,
+    td {
+        border: 1px solid #ccc;
+        text-align: left;
+        padding: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    
+    #table-title-start {
+        padding: 8px;
+        border-top-left-radius: 15px;
+    }
+    
+    #table-title-end {
+        padding: 8px;
+        border-top-right-radius: 15px;
+    }
+    
+    th {
+        background-color: #36454F;
+        color: white;
+        font-size: 13px;
+        text-align: center;
+        height: 50px;
+    }
+    
+    td {
+        height: 40px;
+        width: 130px;
+    }
+    
+    .table-title {
+        border: none;
+    }
+    
+    .overlay {
+        display: none;
+    }
+    
+    .teste {
+        width: auto;
+        margin-left: 310px;
+        height: 280px;
+    }
+    
+    .nav-buttons.active {
+        color: #FF5800;
+    }
+    
+    .nav-buttons.active .icones-image {
+        filter: invert(55%) sepia(100%) saturate(5000%) hue-rotate(360deg) brightness(100%) contrast(100%);
+    }
+    
 
        /* Grafico de pizza */
        #userDistributionChart {

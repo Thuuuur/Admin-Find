@@ -1,37 +1,3 @@
-<?php
-session_start();
-
-if (!isset($_SESSION['token'])) {
-    header("Location: ../view/index.php");
-    echo "<script>alert('Usuário ou senha incorretos!');</script>";
-    exit();
-}
-
-$token = $_SESSION['token'];
-
-$jsonUrl = 'http://localhost/Administrador/select/selectProdutos.php';
-$url = 'http://localhost:3000/usuarios';
-
-$ch = curl_init();
-
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
-
-curl_setopt($ch, CURLOPT_URL, $jsonUrl);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-$jsonContent = curl_exec($ch);
-$produtosArray = json_decode($jsonContent, true);
-
-curl_close($ch);
-
-if ($response !== false) {
-    $usuarios = json_decode($response, true);
-} else {
-    $usuarios = [];
-    echo 'Erro ao obter a lista de usuários.';
-}
-?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -162,133 +128,219 @@ if ($response !== false) {
                 </div>
             </div>
         </div>
+
         <div class="tables">
-            <div class="table-container">
-                <table>
-                    <tr class="table-title">
-                        <th class="table-title" id="table-title-start">ID </th>
-                        <th class="table-title">Nome </th>
-                        <th class="table-title">Cpf</th>
-                        <th class="table-title">Data de Nascimento</th>
-                        <th class="table-title">Telefone </th>
-                        <th class="table-title">Cep</th>
-                        <th class="table-title">Logradouro</th>
-                        <th class="table-title">Bairro </th>
-                        <th class="table-title">Cidade </th>
-                        <th class="table-title" id="table-title-end">Email</th>
-                    </tr>
-                    <!-- Dados da tabela -->
-                    <tr>
-                        <td>1</td>
-                        <td>Maria Silva</td>
-                        <td>123.456.789-00</td>
-                        <td>1990-05-14</td>
-                        <td>(11) 98765-4321</td>
-                        <td>01000-000</td>
-                        <td>Rua A</td>
-                        <td>Centro</td>
-                        <td>São Paulo</td>
-                        <td>maria.silva@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>João Souza</td>
-                        <td>987.654.321-00</td>
-                        <td>1985-10-23</td>
-                        <td>(21) 97654-3210</td>
-                        <td>02000-000</td>
-                        <td>Avenida B</td>
-                        <td>Copacabana</td>
-                        <td>Rio de Janeiro</td>
-                        <td>joao.souza@email.com</td>
-                    </tr>
-                </table>
-            </div>
+    <div class="table-container">
+        <label for="table-select">Escolha uma tabela:</label>
+        <select id="table-select" class="table-select">
+            <option value="table1">Tabela 1</option>
+            <option value="table2">Tabela 2</option>
+        </select>
+        <div id="table1">
+            <table>
+                <tr class="table-title">
+                    <th class="table-title" id="table-title-start">ID</th>
+                    <th class="table-title">Nome</th>
+                    <th class="table-title">Cpf</th>
+                    <th class="table-title">Data de Nascimento</th>
+                    <th class="table-title">Telefone</th>
+                    <th class="table-title">Cep</th>
+                    <th class="table-title">Logradouro</th>
+                    <th class="table-title">Bairro</th>
+                    <th class="table-title">Cidade</th>
+                    <th class="table-title" id="table-title-end">Email</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Maria Silva</td>
+                    <td>123.456.789-00</td>
+                    <td>1990-05-14</td>
+                    <td>(11) 98765-4321</td>
+                    <td>01000-000</td>
+                    <td>Rua A</td>
+                    <td>Centro</td>
+                    <td>São Paulo</td>
+                    <td>maria.silva@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                
+            </table>
         </div>
+        <div id="table2" style="display:none;">
+            <table>
+                <tr class="table-title">
+                    <th class="table-title" id="table-title-start">ID</th>
+                    <th class="table-title">Nome</th>
+                    <th class="table-title">Cpf</th>
+                    <th class="table-title">Data de Nascimento</th>
+                    <th class="table-title">Telefone</th>
+                    <th class="table-title">Cep</th>
+                    <th class="table-title">Logradouro</th>
+                    <th class="table-title">Bairro</th>
+                    <th class="table-title">Cidade</th>
+                    <th class="table-title" id="table-title-end">Email</th>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>João Souza</td>
+                    <td>987.654.321-00</td>
+                    <td>1985-10-23</td>
+                    <td>(21) 97654-3210</td>
+                    <td>02000-000</td>
+                    <td>Avenida B</td>
+                    <td>Copacabana</td>
+                    <td>Rio de Janeiro</td>
+                    <td>joao.souza@email.com</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
 
         <!-- overlay 2 -->
         <div id="overlay2" class="overlay">
